@@ -1,22 +1,23 @@
+import { useState } from 'react';
 import './App.css'
-import ButtonWithModal from './ButtonWithModal';
-import RefactorComponent from './RefactorComponent';
 import SlowComponent from './SlowComponent'
+import Modal from './Modal';
 
 function App() {
 
+  const [open, setIsOpen] = useState(false);
+  
   return(
     <>
-      <RefactorComponent>
-        <div>
-          Something is written...
-        </div>
-        <ButtonWithModal />
-        <div>
-          Something is written...
-        </div>
-        <SlowComponent />
-      </RefactorComponent>
+      <button onClick={()=>setIsOpen(true)}>Open modal</button>
+      <div>
+        Something is written...
+      </div>
+      {open && <Modal close={()=> setIsOpen(false)} />}
+      <div>
+        Something is written...
+      </div>
+      <SlowComponent />
     </>
   );
 };
