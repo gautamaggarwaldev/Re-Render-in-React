@@ -4,15 +4,16 @@ import SlowComponent from './SlowComponent'
 import Modal from './Modal';
 
 
-const MemoisedSlowComponent = memo(function modifiedSlowComponent({time, custom}){
+const MemoisedSlowComponent = memo(function modifiedSlowComponent({time, custom, x}){
   return (
-    <SlowComponent time={time} custom={custom}/>
+    <SlowComponent time={time} custom={custom} x={x}/>
   )
 });
 
 function App() {
   
   const [open, setIsOpen] = useState(false);
+  const [x, setX] = useState(0);
 
   const someFunction = useCallback(()=>{ }, [])
 
@@ -23,6 +24,7 @@ function App() {
   return(
     <>
       <button onClick={()=>setIsOpen(true)}>Open modal</button>
+      <button onClick={()=>setX(x+1)}>Increment</button>
       <div>
         Something is written...
       </div>
@@ -30,7 +32,7 @@ function App() {
       <div>
         Something is written...
       </div>
-      <MemoisedSlowComponent time={ timeArray } custom={someFunction} />
+      <MemoisedSlowComponent time={ timeArray } custom={someFunction} x={x} />
     </>
   );
 };

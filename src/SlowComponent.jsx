@@ -7,8 +7,10 @@ const waitingForSomething = (ms) => {
     }
 }
 
-export default function SlowComponent({time, custom}) {
+export default function SlowComponent({time, custom, x}) {
     waitingForSomething(time[0]);
     custom();
-    return null;
+    return <>
+        hello {x}
+    </>;
 }
