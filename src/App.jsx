@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import './App.css'
 import SlowComponent from './SlowComponent'
 import Modal from './Modal';
 
+
+const MemoisedSlowComponent = memo(SlowComponent);
+
 function App() {
 
   const [open, setIsOpen] = useState(false);
-  
+
   return(
     <>
       <button onClick={()=>setIsOpen(true)}>Open modal</button>
@@ -17,7 +20,7 @@ function App() {
       <div>
         Something is written...
       </div>
-      <SlowComponent />
+      <MemoisedSlowComponent />
     </>
   );
 };
