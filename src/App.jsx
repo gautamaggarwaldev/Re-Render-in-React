@@ -4,9 +4,9 @@ import SlowComponent from './SlowComponent'
 import Modal from './Modal';
 
 
-const MemoisedSlowComponent = memo(function modifiedSlowComponent({time}){
+const MemoisedSlowComponent = memo(function modifiedSlowComponent({time, custom}){
   return (
-    <SlowComponent time={time} />
+    <SlowComponent time={time} custom={custom}/>
   )
 });
 
@@ -24,7 +24,7 @@ function App() {
       <div>
         Something is written...
       </div>
-      <MemoisedSlowComponent time={ [1000] } />
+      <MemoisedSlowComponent time={ 1000 } custom={() => {}} />
     </>
   );
 };
