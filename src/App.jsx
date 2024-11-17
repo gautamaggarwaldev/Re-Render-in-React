@@ -4,7 +4,11 @@ import SlowComponent from './SlowComponent'
 import Modal from './Modal';
 
 
-const MemoisedSlowComponent = memo(SlowComponent);
+const MemoisedSlowComponent = memo(function modifiedSlowComponent({time}){
+  return (
+    <SlowComponent time={time} />
+  )
+});
 
 function App() {
 
@@ -20,7 +24,7 @@ function App() {
       <div>
         Something is written...
       </div>
-      <MemoisedSlowComponent />
+      <MemoisedSlowComponent time={1000 } />
     </>
   );
 };
