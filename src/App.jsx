@@ -2,24 +2,27 @@ import { useState, memo, useCallback, useMemo } from 'react';
 import './App.css'
 import SlowComponent from './SlowComponent'
 import Modal from './Modal';
+import AnotherSlowComponent from './AnotherSlowComponent';
 
 
-const MemoisedSlowComponent = memo(function modifiedSlowComponent({time, custom, x}){
-  return (
-    <SlowComponent time={time} custom={custom} x={x}/>
-  )
-});
+// const MemoisedSlowComponent = memo(function modifiedSlowComponent({time, custom, x}){
+//   return (
+//     <SlowComponent time={time} custom={custom} x={x}/>
+//   )
+// });
+
+const MemoAnotherComponent = memo(AnotherSlowComponent);
 
 function App() {
   
   const [open, setIsOpen] = useState(false);
   const [x, setX] = useState(0);
 
-  const someFunction = useCallback(()=>{ }, [])
+  // const someFunction = useCallback(()=>{ }, [])
 
-  const timeArray = useMemo(()=>{
-    return [1000];
-  },[])
+  // const timeArray = useMemo(()=>{
+  //   return [1000];
+  // },[])
 
   return(
     <>
@@ -32,7 +35,10 @@ function App() {
       <div>
         Something is written...
       </div>
-      <MemoisedSlowComponent time={ timeArray } custom={someFunction} x={x} />
+      {/* <MemoisedSlowComponent time={ timeArray } custom={someFunction} x={x} /> */}
+      <MemoAnotherComponent>
+        <div>Hello, I am Child</div>
+      </MemoAnotherComponent>
     </>
   );
 };
