@@ -8,7 +8,7 @@ const waitingForSomething = (ms) => {
 }
 
 export default function SlowComponent({time, custom}) {
-    waitingForSomething(time);
+    waitingForSomething(time[0]);
     custom();
     return null;
 }

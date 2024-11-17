@@ -1,4 +1,4 @@
-import { useState, memo, useCallback } from 'react';
+import { useState, memo, useCallback, useMemo } from 'react';
 import './App.css'
 import SlowComponent from './SlowComponent'
 import Modal from './Modal';
@@ -16,6 +16,10 @@ function App() {
 
   const someFunction = useCallback(()=>{ }, [])
 
+  const timeArray = useMemo(()=>{
+    return [1000];
+  },[])
+
   return(
     <>
       <button onClick={()=>setIsOpen(true)}>Open modal</button>
@@ -26,7 +30,7 @@ function App() {
       <div>
         Something is written...
       </div>
-      <MemoisedSlowComponent time={ 1000 } custom={someFunction} />
+      <MemoisedSlowComponent time={ timeArray } custom={someFunction} />
     </>
   );
 };
