@@ -24,7 +24,7 @@ function App() {
       <div>
         Something is written...
       </div>
-      <MemoisedSlowComponent time={1000 } />
+      <MemoisedSlowComponent time={ [1000] } />
     </>
   );
 };
