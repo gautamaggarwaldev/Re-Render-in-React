@@ -8,4 +8,4 @@ export default function useModalDialog() {
         open : ()=> setIsOpen(true),
         close : ()=> setIsOpen(false),
     };
-}
+};
