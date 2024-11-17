@@ -1,6 +1,6 @@
-import { useState, memo, useCallback, useMemo } from 'react';
+import { useState, memo, useMemo } from 'react';
 import './App.css'
-import SlowComponent from './SlowComponent'
+// import SlowComponent from './SlowComponent'
 import Modal from './Modal';
 import AnotherSlowComponent from './AnotherSlowComponent';
 
@@ -13,6 +13,10 @@ import AnotherSlowComponent from './AnotherSlowComponent';
 
 const MemoAnotherComponent = memo(AnotherSlowComponent);
 
+function Child(){
+  return <div>Hello, I am a Child</div>
+}
+
 function App() {
   
   const [open, setIsOpen] = useState(false);
@@ -23,6 +27,10 @@ function App() {
   // const timeArray = useMemo(()=>{
   //   return [1000];
   // },[])
+
+  const MemoChild = useMemo(()=>{
+    return <Child />
+  },[])
 
   return(
     <>
@@ -37,7 +45,7 @@ function App() {
       </div>
       {/* <MemoisedSlowComponent time={ timeArray } custom={someFunction} x={x} /> */}
       <MemoAnotherComponent>
-        <div>Hello, I am Child</div>
+        {MemoChild}
       </MemoAnotherComponent>
     </>
   );
